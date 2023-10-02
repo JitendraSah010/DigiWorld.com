@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>DigiWorld.com/Delivery Requests</title>
+    <link rel="stylesheet" href="/../css/main.css">
+    <link rel="stylesheet" href="/../css/style.css">
+</head>
+<body>
+  <%- include('adminNav')%>
+
+    <section style="margin-top: 100px;">
+      <% if(DeliveryOrders.length !=0) {%>
+        <div class="container mt-4">
+            <div class="row justify-content-center">
+                <div class=" col-md-12">
+                    <h2 class="fw-bold">Cash on Delivery Requests</h2>
+                    <p class="mb-4">Following users asked for cash on delivery option. Here are their details:</p>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">S.N</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Contact</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <%for(let i=0; i< DeliveryOrders.length; i++) {%>
+                          <tr>
+                            <th scope="row"> <%=i+1 %> </th>
+                            <td> <%= DeliveryOrders[i].productName%> 
+                                <%if(DeliveryOrders[i].deliveryStatus==0) {%>
+                                    <p class="tag resolved">Undelivered</p>
+                                    <%}else if(DeliveryOrders[i].deliveryStatus==1) {%>
+                                      <p class="tag paid">Delivered</p>
+                                    <%} else {%>
+                                        <p class="tag new">Cancelled</p>
+                                        <%}%>
+                            </td>
+                            <td> <%= DeliveryOrders[i].productQuantity %> </td>
+                            <td> <%= DeliveryOrders[i].productQuantity * DeliveryOrders[i].productPrice %> </td>
+                            <td> <%= DeliveryOrders[i].customerContact %> </td>
+                            <td><%= DeliveryOrders[i].deliveryAddress %></td>
+                            <td><%= DeliveryOrders[i].customerName %></td>
+                            <td>
+                              <form action="/update-deliveryStatus" method="post">
+                                <input type="hidden" name="id" value="<%= DeliveryOrders[i]._id %>" >
+                                <button class="callback-update-btn">Update</button>
+                              </form>
+                            </td>
+                          </tr>
+                        <%}%>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+        <%} else {%>
+            <h3 class="text-center mt-5 py-3 fw-bold text-danger noCallback">No Cash On Delivery Requests</h3>
+          <%}%>
+    </section>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>DigiWorld.com/profile</title>
+    <link rel="stylesheet" href="/../css/main.css">
+    <link rel="stylesheet" href="/../css/home.css">
+    <link rel="stylesheet" href="/../css/style.css">
+</head>
+
+<body>
+        <%-include('nav')%>
+        <% if(message.error) {%>
+            <div class=" alertmsg profilealertMsg text-center" id="showAlert"><%= message.error%></div>
+        <%}%>
+    <section >
+        <div class="container mt-5 mb-5 largeScreen">
+            <div class="row justify-content-center profileContainer">
+                <div class=" col-md-6 profileWidth">
+                    <h2 class="fw-bold "><%=profileDetails.name%>'s  profile</h2>
+                    <p class="mb-4">Here is your profile, you can update it if you want.</p>
+                    <div class="d-flex profileShadow">
+                        <a href="/updateImg"> <img src="<%=profileDetails.profileImg%> "  class="profilePic mt-2" alt=""> </a>
+                        <div class="ms-3">
+                            <h3 class=" m-0"><%=profileDetails.name%></h3>
+                            <p class="m-0">Email: <%=profileDetails.email%> </p>
+                            <p class="m-0">Contact: <%=profileDetails.contact%> </p>
+                            <% if (profileDetails.address === "Add address") { %>
+                                <a href="/updateImg" style="text-decoration: none;" > <p class="mb-3 mt-0"> <span class="text-black"> Address: </span> <span class="address"> Click to <%= profileDetails.address %> </span> </p> </a>
+                            <%} else {%>
+                                <p class="m-0 mb-2">Address: <%=profileDetails.address%> </p>
+                                <%}%>
+                            <form action="/update-profile" method="post">
+                                <input type="hidden" name="id" value="<%=profileDetails._id%>">
+                                <button class="btn editBtn mt- py-1" >Edit Profile</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- -------------------------UI for Small screen Size----------------- -->
+        <div class="container smallScreen mb-4 ">
+            <div class="row justify-content-center profileContainer">
+                <div class=" col-md-6 ProfileMargin">
+                    <h2 class="fw-bold text-muted "><%=profileDetails.name%>'s  profile</h2>
+                    <p class="mb-4">Here is your profile, you can update it if you want.</p>
+                    <div class="profileShadow">
+                        <a href=""> <img src="<%=profileDetails.profileImg%> "  class="profilePic" alt=""> </a>
+                            <h3 class="mt-2"><%=profileDetails.name%></h3>
+                            <p class="m-0">Email: <%=profileDetails.email%> </p>
+                            <p class="m-0">Contact: <%=profileDetails.contact%> </p>
+                            <% if (profileDetails.address === "Add address") { %>
+                                <a href="/updateImg" style="text-decoration: none;" > <p class="mb-3 mt-0"> <span class="text-black"> Address: </span> <span class="address"> Click to <%= profileDetails.address %> </span> </p> </a>
+                            <%} else {%>
+                                <p class="m-0 mb-2">Address: <%=profileDetails.address%> </p>
+                                <%}%>
+                            <form action="/update-profile" method="post">
+                                <input type="hidden" name="id" value="<%=profileDetails._id%>">
+                                <button class="btn editBtn  py-1" >Edit Profile</button>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <%-include('footer')%>
+
+    <script>
+        let alertDiv = document.getElementById("showAlert");
+        setTimeout(function() {
+          alertDiv.style.display = "none";
+        }, 4000);
+    </script>
+
+</body>
+</html>

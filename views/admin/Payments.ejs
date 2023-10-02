@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>DigiWorld.com/online payment</title>
+    <link rel="stylesheet" href="/../css/main.css">
+    <link rel="stylesheet" href="/../css/style.css">
+</head>
+<body>
+  <%- include('adminNav')%>
+
+    <section style="margin-top: 100px;">
+      <% if(paidUsers.length !=0) {%>
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class=" col-md-12">
+                  <h2 class="fw-bold">Payment Details</h2>
+                  <p class="mb-4">These are the users who have completed their payment online. </p>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">S.N</th>
+                            <th scope="col">Order ID</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Method</th>
+                            <th scope="col">Paid on</th>
+                            <th scope="col">Action</th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <%for(let i=0; i< paidUsers.length; i++) {%>
+                          <tr>
+                            <th scope="row"> <%=i+1 %> </th>
+                            <td> <%= paidUsers[i].order_id%> 
+                              <%if(paidUsers[i].deliveryStatus==0) {%>
+                                <p class="tag resolved">Undelivered</p>
+                                <%}else if(paidUsers[i].deliveryStatus==1) {%>
+                                  <p class="tag paid">Delivered</p>
+                                <%}else if(paidUsers[i].deliveryStatus==2) {%>
+                                  <p class="tag new">Cancelled waiting for refund</p>
+                                <%} else {%>
+                                    <p class="tag new">Refunded</p>
+                                    <%}%>
+                            </td>
+                            <td> <%= paidUsers[i].email %> </td>
+                            <td><%= paidUsers[i].phone %></td>
+                            <td><%= paidUsers[i].desc %></td>
+                            <td><%= paidUsers[i].method %></td>
+                            <td><%= paidUsers[i].date %></td>
+                            <td>
+                              <form action="/update-paidDeliveryStatus" method="post">
+                                <input type="hidden" name="id" value="<%= paidUsers[i]._id %>" >
+                                <button class="callback-update-btn">Update</button>
+                              </form>
+                            </td>
+                          </tr>
+                        <%}%>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+        <%} else {%>
+          <h3 class="text-center mt-5 py-3 fw-bold text-danger noCallback">No any online payments available </h3>
+          <%}%>
+    </section>
+</body>
+</html>

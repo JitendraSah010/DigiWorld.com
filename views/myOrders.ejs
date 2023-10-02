@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>DigiWorld.com/My Orders</title>
+    <link rel="stylesheet" href="/../css/main.css">
+    <link rel="stylesheet" href="/../css/style.css">
+    <link rel="stylesheet" href="/../css/home.css">
+</head>
+<body>
+    <section style="margin-top: 100px;">
+        <%- include('nav')%>
+    </section>
+
+    <% if(message.error) {%>
+        <div class=" alertmsg Orderalertmsg text-center" id="showAlert"><%= message.error%></div>
+    <%}%>
+
+    <section class="largeScreen">
+  <% if(CustomerOrderDetails.length!=0 || onlinePaymentOrderDetails.length!=0) {%>
+        <h2 class="text-center marginLargeScr fw-bold fs-1 "> My orders </h2>
+        <div class="container mb-0 mt-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <% for (let i = 0; i < CustomerOrderDetails.length; i++) { %>
+                    <a href="/allProducts" style="text-decoration: none; color: black;">    
+                    <div class="d-flex justify-content-between shadow p-3 mb-5">
+                        <div class=" d-flex">
+                            <img src="https://source.unsplash.com/1600x1000/?<%= CustomerOrderDetails[i].productName %>" class="cartImg" alt="">
+                            <div class="productTitle ms-3">
+                              <h4 class=" mb-1"> <%= CustomerOrderDetails[i].productName %> </h4>
+                              <p class="m-0">Amount: Rs <%= CustomerOrderDetails[i].productQuantity * CustomerOrderDetails[i].productPrice %> </p>
+                              <p class="mb-0" >Quantity: <%= CustomerOrderDetails[i].productQuantity %> </p>    
+                            <% if(CustomerOrderDetails[i].deliveryStatus==0) {%>
+                              <p class="" >Ordered on: <span class="text-muted"><%= CustomerOrderDetails[i].orderDate %> </span> </p>    
+                            <%} else if(CustomerOrderDetails[i].deliveryStatus==1) {%> 
+                              <p class="delivered-order" >delivered on: <span class=""><%= CustomerOrderDetails[i].deliveredDate %> </span> </p>    
+                                <%} else {%> 
+                                    <p class="cancelled-date" >Cancelled on: <span class="text-muted"><%= CustomerOrderDetails[i].deliveredDate %> </span> </p>    
+                                    <%}%>
+                            <% if(CustomerOrderDetails[i].deliveryStatus==0) {%>        
+                              <form action="/cancelOrder" method="post">
+                                <input type="hidden" name="productId" value="<%= CustomerOrderDetails[i]._id %>">
+                                <button class="btn m-0 p-0 remove" style="display: block;">Cancel Order</button>
+                              </form>
+                            <%}%>  
+                            </div>           
+                        </div>
+                        <% if(CustomerOrderDetails[i].deliveryStatus==0) {%>
+                        <div class="">
+                            <p class="fs-5 card px-2 py-1">Delivering Soon</p>
+                        </div>
+                        <%} else if(CustomerOrderDetails[i].deliveryStatus==1) {%>
+                            <div class="">
+                                <p class="fs-5 card px-2 py-1 delivered">Delivered</p>
+                            </div>
+                            <%} else {%>
+                                <div class="">
+                                    <p class="fs-5 card px-2 py-1 cancelled">Order Cancelled</p>
+                                </div>
+                                <%}%>
+                        </div>
+                    </a>
+                    <%}%> 
+                </div>
+            </div>
+        </div>
+
+        <%} else {%>
+            <h2 class="text-center marginLargeScr fw-bold fs-1 ">My Orders </h2>
+            <div class="noCartItem text-center mb-5">
+              <h1 class=" text-center mt-3 mb-3 noItem fw-bold">You haven't ordered anything yet😢. <br> Hurry up order something Now!!</h1>
+              <a href="/allProducts" class="AddCartItem" >click to order</a>
+            </div>
+            <%}%>
+
+    </section>
+
+    <!-- for small screen -->
+    <section class="smallScreen">
+  <% if(CustomerOrderDetails.length!=0) {%>
+        <h1 class="text-center fw-bold"> My orders </h1>
+        <div class="container mt-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <% for (let i = 0; i < CustomerOrderDetails.length; i++) { %>
+                <a href="/allProducts" style="text-decoration: none; color: black;">    
+                    <div class="shadow p-3 mb-5">
+                        <div class="">
+                              <img src="https://source.unsplash.com/1600x1000/?<%= CustomerOrderDetails[i].productName %>" class=" cartImg1 ms-3" alt="">
+                            <div class="productTitle ms-3">
+                              <h2 class=" mb-1 mt-2"> <%= CustomerOrderDetails[i].productName %> </h2>
+                              <p class="m-0">Amount: Rs <%= CustomerOrderDetails[i].productQuantity * CustomerOrderDetails[i].productPrice %> </p>
+                              <p class="mb-0" >Quantity: <%= CustomerOrderDetails[i].productQuantity %> </p>    
+                            <% if(CustomerOrderDetails[i].deliveryStatus==0) {%>
+                              <p class="mb-0 orderDateFont" >Ordered on: <span class="text-muted"><%= CustomerOrderDetails[i].orderDate %> </span> </p>    
+                            <%} else if(CustomerOrderDetails[i].deliveryStatus==1) {%> 
+                              <p class="delivered-order mb-0 orderDateFont" >delivered on: <span class=""><%= CustomerOrderDetails[i].deliveredDate %> </span> </p>    
+                                <%} else {%> 
+                                    <p class="cancelled-date mb-0 orderDateFont" >Cancelled on: <span class="text-muted"><%= CustomerOrderDetails[i].deliveredDate %> </span> </p>    
+                                    <%}%>
+
+                            <% if(CustomerOrderDetails[i].deliveryStatus==0) {%>        
+                              <form action="/cancelOrder" method="post">
+                                <input type="hidden" name="productId" value="<%= CustomerOrderDetails[i]._id %>">
+                                <button class="btn m-0 p-0 mb-2 remove" style="display: block;">Cancel Order</button>
+                              </form>
+                            <%}%>  
+                            </div>           
+                        </div>
+                        <% if(CustomerOrderDetails[i].deliveryStatus==0) {%>
+                        <div class="text-center mt-3">
+                            <p class="fs-5 card px-2 py-1">Delivering Soon</p>
+                        </div>
+                        <%} else if(CustomerOrderDetails[i].deliveryStatus==1) {%>
+                            <div class="text-center mt-3">
+                                <p class="fs-5 card px-2 py-1 delivered">Delivered</p>
+                            </div>
+                            <%} else {%>
+                                <div class="text-center mt-3">
+                                    <p class="fs-5 card px-2 py-1 cancelled">Order Cancelled</p>
+                                </div>
+                                <%}%>
+                    </div>
+                </a>
+                    <%}%> 
+                </div>
+            </div>
+        </div>
+        <%} else {%>
+            <h2 class="text-center marginLargeScr fw-bold fs-1 ">My Orders </h2>
+            <div class="noCartItem text-center mb-5">
+              <h1 class=" text-center mt-3 mb-4 noItem fw-bold">You haven't ordered anything yet😢. <br> Hurry up order something Now!!</h1>
+              <a href="/allProducts" class="AddCartItem" >click to order</a>
+            </div>
+            <%}%>
+    </section>
+<!-- ----------------------------online paid for product -------------------------- -->
+    <section class="largeScreen">
+        <div class="container mb-3 mt-0">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <% for (let i = 0; i< onlinePaymentOrderDetails.length; i++) { %>
+                <a href="/allProducts" style="text-decoration: none; color: black;">    
+                    <div class="d-flex justify-content-between shadow p-3 mb-5">
+                        <div class=" d-flex">
+                            <img src="https://source.unsplash.com/1600x1000/?<%= onlinePaymentOrderDetails[i].desc %>" class="cartImg" alt="">
+                            <div class="productTitle ms-3">
+                              <h4 class=" mb-1"> <%= onlinePaymentOrderDetails[i].desc %> </h4>
+                              <p class="m-0">Amount: Rs <%= onlinePaymentOrderDetails[i].amount/100 %>  
+                                <% if(onlinePaymentOrderDetails[i].deliveryStatus ==0 || onlinePaymentOrderDetails[i].deliveryStatus ==1 ) {%>
+                                 <span class="px-2" style="background-color: rgb(255, 254, 172); border-radius: 3px; color: green;" >paid online</span> 
+                                <%} else if(onlinePaymentOrderDetails[i].deliveryStatus ==2) {%>
+                                 <span class="px-2" style="background-color: rgba(97, 143, 187, 0.288); border-radius: 3px; color: rgb(0, 0, 0);" >Refunding soon</span> 
+                                    <%} else {%>
+                                        <span class="px-2" style="background-color: rgba(235, 235, 235, 0.664); border-radius: 3px; color: green;" >Refunded</span> 
+                                    <%}%>
+                              </p>
+                              <p class="mb-0" >Quantity: 1 </p>    
+                            <% if(onlinePaymentOrderDetails[i].deliveryStatus=="0") {%>
+                              <p class="" >Ordered on: <span class="text-muted"><%= onlinePaymentOrderDetails[i].date %> </span> </p>    
+                              <%} else if(onlinePaymentOrderDetails[i].deliveryStatus==1) {%> 
+                                <p class="delivered-order" >delivered on: <span class=""><%= onlinePaymentOrderDetails[i].date %> </span> </p>    
+                                  <%} else {%> 
+                                    <p class="cancelled-date" >cancelled on: <span class="text-muted"><%= onlinePaymentOrderDetails[i].date %> </span> </p>    
+                                    <%}%>
+
+                            <% if(onlinePaymentOrderDetails[i].deliveryStatus=="0") {%>        
+                              <form action="/paidOrderCancel" method="post">
+                                <input type="hidden" name="productId" value="<%= onlinePaymentOrderDetails[i]._id %>">
+                                <button class="btn m-0 p-0 remove" style="display: block;">Cancel Order</button>
+                              </form>
+                            <%}%>  
+                            </div>           
+                        </div>
+                        <% if(onlinePaymentOrderDetails[i].deliveryStatus=="0") {%>
+                        <div class="">
+                            <p class="fs-5 card px-2 py-1">Delivering Soon</p>
+                        </div>
+                        <%} else if(onlinePaymentOrderDetails[i].deliveryStatus==1) {%>
+                            <div class="">
+                                <p class="fs-5 card px-2 py-1 delivered">Delivered</p>
+                            </div>
+                            <%} else {%>
+                                <div class="">
+                                    <p class="fs-5 card px-2 py-1 cancelled">Order Cancelled</p>
+                                </div>
+                                <%}%>
+                        </div>
+                    </a>
+                    <%}%> 
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- for small screen -->
+    <section class="smallScreen">
+        <div class="container mb-0 mt-0">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <% for (let i = 0; i < onlinePaymentOrderDetails.length; i++) { %>
+                <a href="/allProducts" style="text-decoration: none; color: black;">    
+                    <div class="shadow p-3 mb-5">
+                        <div class="">
+                              <img src="https://source.unsplash.com/1600x1000/?<%= onlinePaymentOrderDetails[i].desc %>" class=" cartImg1 ms-3" alt="">
+                            <div class="productTitle ms-3">
+                              <h2 class=" mb-1 mt-2"> <%= onlinePaymentOrderDetails[i].desc %> </h2>
+                              <p class="m-0">Amount: Rs <%= onlinePaymentOrderDetails[i].amount/100 %> <span class="px-2" style="background-color: rgb(255, 254, 172); border-radius: 3px; color: green;" >paid online</span>  </p>
+                              <p class="mb-0" >Quantity: 1 </p>    
+                            <% if(onlinePaymentOrderDetails[i].deliveryStatus==0) {%>
+                              <p class="mb-0 orderDateFont" >Ordered on: <span class="text-muted"><%= onlinePaymentOrderDetails[i].date %> </span> </p>    
+                            <%} else if(onlinePaymentOrderDetails[i].deliveryStatus==1) {%> 
+                              <p class="delivered-order mb-0 orderDateFont" >delivered on: <span class=""><%= onlinePaymentOrderDetails[i].date %> </span> </p>    
+                                <%} else {%> 
+                                    <p class="cancelled-date mb-0 orderDateFont" >Cancelled on: <span class="text-muted"><%= onlinePaymentOrderDetails[i].date %> </span> </p>    
+                                    <%}%>
+
+                            <% if(onlinePaymentOrderDetails[i].deliveryStatus==0) {%>        
+                              <form action="/paidOrderCancel" method="post">
+                                <input type="hidden" name="productId" value="<%= onlinePaymentOrderDetails[i]._id %>">
+                                <button class="btn m-0 p-0 mb-2 remove" style="display: block;">Cancel Order</button>
+                              </form>
+                            <%}%>  
+                            </div>           
+                        </div>
+                        <% if(onlinePaymentOrderDetails[i].deliveryStatus==0) {%>
+                        <div class="text-center mt-3">
+                            <p class="fs-5 card px-2 py-1">Delivering Soon</p>
+                        </div>
+                        <%} else if(onlinePaymentOrderDetails[i].deliveryStatus==1) {%>
+                            <div class="text-center mt-3">
+                                <p class="fs-5 card px-2 py-1 delivered">Delivered</p>
+                            </div>
+                            <%} else {%>
+                                <div class="text-center mt-3">
+                                    <p class="fs-5 card px-2 py-1 cancelled">Order Cancelled</p>
+                                </div>
+                                <%}%>
+                    </div>
+                </a>
+                    <%}%> 
+                </div>
+            </div>
+        </div>
+    </section>
+    <%- include('footer')%>
+
+    <script>
+        let alertDiv = document.getElementById("showAlert");
+        setTimeout(function() {
+          alertDiv.style.display = "none";
+        }, 5000);
+      </script>
+
+</body>
+</html>

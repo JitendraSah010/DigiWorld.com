@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg fixed-top bg-light">
+    <div class="container">
+      <a class="navbar-brand fw-bold logo" href="/admin/AdminDashboard">Digi<span class="world">World</span> </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link AdminLinks" aria-current="page" href="/admin/AdminDashboard">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link AdminLinks" href="/callbacks">Callbacks</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link AdminLinks" href="/admin/create-product">Create Product</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link AdminLinks" href="/admin/edit-product">Edit Product</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link AdminLinks" href="/users">Users</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link AdminLinks" href="/paid-users">Paid Orders</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link AdminLinks" href="/deliveryOrders">Delivery Orders</a>
+          </li>
+        </ul>
+        <form action="/logout" method="post">
+          <button class="btn btn-dark px-3 my-3 py-1 fs-6 login-btn mt-0 " type="submit"> Logout </button>                       
+        </form>
+      </div>
+    </div>
+  </nav>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>

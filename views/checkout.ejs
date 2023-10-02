@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>DigiWorld.com/Order Method</title>
+    <link rel="stylesheet" href="/../css/main.css">
+    <link rel="stylesheet" href="/../css/style.css">
+    <link rel="stylesheet" href="/../css/home.css">
+    <style>
+        .razorpay-payment-button{
+            background-color: rgba(153, 205, 50, 0.726);
+            color: rgb(31, 31, 31);
+            border: none;
+            border-radius: 6px;
+            padding: 4px 14px;
+            box-shadow: 0.5px 4px 8px rgb(107, 107, 107);
+        }
+        .razorpay-payment-button:hover{
+            background-color: rgb(183, 194, 160);
+            color: black;
+            box-shadow: 0.5px 3px 8px rgb(107, 107, 107);
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('nav')%>
+        <div class="container productsMargin footermargin">
+            <p class="text-center" >Click on pay button to buy <%= productDetails.title%></p>
+            <div class="row justify-content-center">
+                <div class="col-md-5 mb-4 ">
+                    <div class="card shadow">
+                        <div class="card-body wrap">
+                            <h3 class="ProductName"><%= productDetails.title%></h3>  
+<!--------------------------------Payment integrate for Nodejs------------------------------>
+                        <div class="paymentMethod">
+                            <form action="/payment-success" method="POST">
+                              <script src="https://checkout.razorpay.com/v1/checkout.js"
+                                data-key= "<%= razorpayKey %>"
+                                data-amount="<%= order.amount%>"
+                                data-order_id="<%= order.id%>"
+                                data-buttontext="Pay Rs <%= productDetails.pricing%> Now"
+                                data-name="JKS"
+                                data-description="<%= productDetails.title%>"
+                                data-img=""
+                                data-prefill.name="<%= loginUser.name%>"
+                                data-prefill.email="<%= loginUser.email%>"
+                                data-prefill.contact="<%= loginUser.contact%>"
+                                data-theme.color="#0066ff"
+                              > 
+                            </script>
+                            <input type="hidden" custom="Hidden Element" name="b" value="">
+
+                            </form>
+                            <form action="/CashDelivery" method="post">
+                                <input type="hidden" name="title" value="<%= productDetails.title%>">
+                                <button class="btn cashDelievery">Cash On Delivery</button>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<%- include('footer')%>
+
+</body>
+</html>

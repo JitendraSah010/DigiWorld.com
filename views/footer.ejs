@@ -1,0 +1,75 @@
+<footer class="footer">
+    <ul class="social-icon mt-5 p-0">
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-facebook"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-twitter"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-linkedin"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a></li>
+    </ul>
+    <ul class="menu">
+      <a class="menu__link fs-6" href="/">Home</a> <span class="separateLine">|</span>
+      <a class="menu__link fs-6" href="#">About</a> <span class="separateLine">|</span>
+      <a class="menu__link fs-6" href="/allProducts">Services</a> <span class="separateLine">|</span>
+      <!-- <a class="menu__link fs-6" href="#">Contact</a> -->
+      <form class=" tryService" role="search">
+        <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
+        <button type="button" class="menu__link fs-6  btn contactLink" data-bs-toggle="modal"
+          data-bs-target="#exampleModal">
+          Contact us
+        </button>
+      </form>
+
+    </ul>
+    <p class="text-center copyRight">&copy;2023 DigiWorld | All Rights Reserved</p>
+    <!-- footer wave design -->
+    <div class="custom-shape-divider-top-1693296359">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+        </svg>
+    </div>
+  </footer>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+      <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+
+      <div class="modal-header text-black">
+        <div class="text-center">
+          <h1 class="modal-title fs-3 fw-bold" id="exampleModalLabel">Request Callback ☎</h1>
+          <p>Want more detail about alpha club? Our team will get back to you in just 24 hours!</p>
+        </div>
+
+      </div>
+      <div class="modal-body pt-0">
+        <form action="/request-callback" method="post">
+          <div class="form-floating mb-3">
+            <input type="text" name="name" class="form-control modal-input" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Full Name</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="email" name="email" class="form-control modal-input" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Email address</label>
+          </div>
+          <div class="form-floating">
+            <input type="number" name="phone" class="form-control modal-input" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Phone number</label>
+          </div>
+          <button class="btn btn-primary py-2 mt-3">Request Callback</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

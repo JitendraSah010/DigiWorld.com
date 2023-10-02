@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>DigiWorld.com/products</title>
+    <link rel="stylesheet" href="/../css/main.css">
+    <link rel="stylesheet" href="/../css/style.css">
+    <link rel="stylesheet" href="/../css/home.css">
+</head>
+
+<body>
+    <%- include('nav')%>
+    <div class="container productHeading productsMargin">
+        <div class="row justify-content-center">
+            <div class="col-10 ps-0">
+                <h2 class="fw-bold">Browser Products</h2>
+                <p>Irresistible product that enhances your life - buy now to experience quality, value, and satisfaction firsthand.</p>
+            </div>
+        </div>
+    </div>
+        <div class="container ">
+            <div class="allproducts d-flex justify-content-center" style="column-gap: 40px;">
+                <% for(let i=0; i< fetchedProducts.length; i++) {%>
+                <div class="col-md-5 mb-5 " >
+                    <div class="card shadow">
+                        <div class="card-body ">
+                            <div class="pricePosition">
+                                <img src="https://source.unsplash.com/1600x700/? <%= fetchedProducts[i].img%>" class="img-fluid rounded" alt="">
+                                <a href="/checkout?fetchedProduct=<%= fetchedProducts[i].title %>" class="pay rounded bg-white mb-0 priceAmount productPayImg"> Rs <%= fetchedProducts[i].pricing%></a>      <!--fetchedProduct is used to get product name i.e: req.query.fetchedProduct -->
+                                <form action="/addCart" method="post">
+                                    <input type="hidden" name="productId" value="<%= fetchedProducts[i]._id %>">
+                                    <button class="cartbtn cart">Add Cart</button>
+                                </form>
+                            </div>
+                            <div class="product-flex mb-2">
+                                <h3 class="mt-3 productH3 "><%= fetchedProducts[i].title%> </h3>
+                                <a href="/checkout?fetchedProduct=<%= fetchedProducts[i].title %>" class="pay mb-0 productPay ">Buy Now</a>      <!--fetchedProduct is used to get product name i.e: req.query.fetchedProduct -->
+                            </div>
+                            <p class="small"> <%= fetchedProducts[i].desc%> </p>
+                        </div>
+                    </div>
+                </div>
+                <%}%>
+            </div>
+        </div>
+
+    <%- include('footer')%>
+
+</body>
+
+</html>

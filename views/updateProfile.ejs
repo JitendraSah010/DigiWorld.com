@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>DigiWorld.com/update Profile</title>
+    <link rel="stylesheet" href="/../css/main.css">
+    <link rel="stylesheet" href="/../css/style.css">
+    <link rel="stylesheet" href="/../css/home.css">
+</head>
+
+<body>
+    <%-include('nav')%>
+    <section>
+        <div class="container mt-5">
+            <div class="row justify-content-center UpdateprofileContainer">
+                <div class=" col-md-6">
+                    <div class="">
+                        <h1 class="modal-title fs-3 fw-bold mt-3" id="exampleModalLabel">Update Profile</h1>
+                        <p>Update your profile. Please enter corect information</p>
+                      </div>
+                    <div class="mt-4">
+                        <form action="/store-update-profile" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="id" value="<%= profileDetails._id%>" >
+                            <div class="d-flex" style="gap: 12px;">
+                                <div class="form-floating mb-3 w-50">
+                                    <input type="text" name="name" value="<%= profileDetails.name%>" class="form-control modal-input" id="floatingInput" placeholder="name@example.com">
+                                    <label for="floatingInput">Full Name</label>
+                                </div>
+                                <div class="form-floating mb-3 w-50">
+                                    <input type="email" name="email" value="<%= profileDetails.email%>"
+                                        class="form-control modal-input" id="floatingInput"
+                                        placeholder="name@example.com">
+                                    <label for="floatingInput">Email address</label>
+                                </div>
+                            </div>
+                            <div class="d-flex" style="gap: 12px;">
+                                <div class="form-floating w-50">
+                                    <input type="number" name="contact" value="<%= profileDetails.contact%>"
+                                        class="form-control modal-input" id="floatingPassword" placeholder="Password">
+                                    <label for="floatingPassword">Phone number</label>
+                                </div>
+                                <div class="form-floating mb-3 w-50">
+                                    <input type="file" name="profileImg" value="<%= profileDetails.profileImg%>"
+                                        class="form-control modal-input" id="floatingInput"
+                                        placeholder="name@example.com">
+                                    <label for="floatingInput">Upload profile</label>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-4" style="gap: 12px;">
+                                <div class="w-50">
+                                    <label for="floatingPassword" class="ms-2 enterpas">Update Address</label>
+                                    <textarea name="address" id="" cols="0" rows="2" class="form-control modal-input" placeholder="Enter address"><%= profileDetails.address%></textarea>
+                                </div>
+                                <div class="form-floating w-50 d-none mt-4 " id="inputHide">
+                                    <input type="password" name="password"  
+                                        class="form-control modal-input" id="floatingPassword" placeholder="Password">
+                                    <label for="floatingPassword"> <span class="enterpas"> Enter New Password </span> </label>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary py-2 mt-3">Update Profile</button>
+                        </form>
+                        <button class="btn changepas " id="changePas" onclick="inputShow()" >change password</button>
+                        <button class="btn d-none changepas" id="NoChangePas" onclick="NoInputShow()"  >Don't change password</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <%-include('footer')%>
+
+    <script>
+        let inputHide = document.getElementById('inputHide');
+        let changePas = document.getElementById('changePas');
+        let NoChangePas = document.getElementById('NoChangePas');
+        function inputShow(){
+            inputHide.classList.remove('d-none');
+            changePas.classList.add('d-none');
+            NoChangePas.classList.remove('d-none');
+        }
+        function NoInputShow(){
+            inputHide.classList.add('d-none');
+            NoChangePas.classList.add('d-none');
+            changePas.classList.remove('d-none');
+        }
+    </script>
+
+</body>
+
+</html>

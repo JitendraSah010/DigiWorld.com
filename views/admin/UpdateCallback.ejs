@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>DigiWorld.com/update callback</title>
+    <link rel="stylesheet" href="/../css/main.css">
+    <link rel="stylesheet" href="/../css/style.css">
+</head>
+
+<body>
+    <%-include('adminNav')%>
+    <section style="margin-top: 100px;">
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class=" col-md-6">
+                    <h2 class="fw-bold text-center">Update callback for <span class="text-muted">
+                            <%= callback.name%>
+                        </span> </h2>
+                    <div class="mt-5">
+                        <form action="/store-update-callback" method="post">
+                            <input type="hidden" name="id" value="<%= callback._id%>" >
+                            <div class="d-flex" style="gap: 12px;">
+                                <div class="form-floating mb-3 w-50">
+                                    <input type="text" name="name" value="<%= callback.name%>" class="form-control modal-input" id="floatingInput" placeholder="name@example.com">
+                                    <label for="floatingInput">Full Name</label>
+                                </div>
+                                <div class="form-floating mb-3 w-50">
+                                    <input type="email" name="email" value="<%= callback.email%>"
+                                        class="form-control modal-input" id="floatingInput"
+                                        placeholder="name@example.com">
+                                    <label for="floatingInput">Email address</label>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-4" style="gap: 12px;">
+                                <div class="form-floating w-50">
+                                    <input type="number" name="phone" value="<%= callback.phone%>"
+                                        class="form-control modal-input" id="floatingPassword" placeholder="Password">
+                                    <label for="floatingPassword">Phone number</label>
+                                </div>
+                                <div class="form-floating w-50">
+                                    <input type="number" name="status" value="<%= callback.status%>"
+                                        class="form-control modal-input" id="floatingPassword" placeholder="Password">
+                                    <label for="floatingPassword">Status</label>
+                                </div>
+                            </div>
+                            <div class=" ">
+                                <label for="floatingPassword" class="ms-2">Remark</label>
+                                <textarea name="remarks" id="" cols="10" rows="4" class="form-control modal-input" placeholder="Remark"><%= callback.remarks%></textarea>
+                            </div>
+                            <button class="btn btn-primary py-2 mt-3">Update Callback</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

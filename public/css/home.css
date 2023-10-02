@@ -1,0 +1,645 @@
+.part2{
+    width: 100%;
+    height: 340px;
+    background-image: url('../backgroundImg.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.homeCard{
+    border: none;
+    box-shadow: none;
+    margin-top: 130px;
+}
+.homeimg{
+    width: 420px;
+    margin-left: 200px;
+    margin-top: -14px;
+}
+.smallScreen{
+    display: none;
+}
+/* ------------------------------frequently ordered products css --------------------- */
+.FrequentlyImg{
+    width: 100%;
+    border-radius: 6px 6px 0px 0px;
+    position: relative;
+}
+.marginLargeScr{
+  margin-top: 40px;
+}
+.box-shadow{
+    box-shadow: 1px 2px 10px rgb(32, 32, 32);
+    border-radius: 6px;
+}
+.ratings{
+    position: absolute;
+    bottom: 6px;
+    background-color: rgba(255, 255, 255, 0.89);
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin: 0;
+}
+.discount{
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    background-color: rgba(255, 234, 40, 0.63);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+.BuyBtn{
+  background-color: rgba(142, 199, 57, 0.76);
+}
+/* ------------------------------------- footer section css ----------------------------- */
+.footer {
+    position: relative;
+    width: 100%;
+    background: #000000a8;
+    min-height: 100px;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .social-icon,
+  .menu {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    flex-wrap: wrap;
+  }
+  .social-icon__item,
+  .menu__item {
+    list-style: none;
+  }
+  .social-icon__link {
+    font-size: 2rem;
+    color: #fff;
+    margin: 0 10px;
+    display: inline-block;
+    transition: 0.5s;
+  }
+  .social-icon__link:hover {
+    transform: translateY(-10px);
+  }
+  .menu__link {
+    font-size: 1.2rem;
+    color: #fff;
+    margin: 0 10px;
+    display: inline-block;
+    transition: 0.5s;
+    text-decoration: none;
+    opacity: 0.75;
+    font-weight: 300;
+  }
+  .menu__link:hover {
+    opacity: 1;
+  }
+  .footer p {
+    color: #e0e0e0;
+    margin: 15px 0 10px 0;
+    font-size: 0.9rem;
+    font-weight: 300;
+  }
+  .separateLine{
+    color: #e0e0e0;
+  } 
+.contact:hover{
+  color: white;
+}
+.contactLink{
+  border: none;
+  margin-top: 1px;
+  margin-left: -3px;
+}
+.contactLink:hover{
+  color: #fff;
+}
+  @keyframes animateWaves {
+    0% {
+      background-position-x: 1000px;
+    }
+    100% {
+      background-positon-x: 0px;
+    }
+  }
+  
+  @keyframes animate {
+    0% {
+      background-position-x: -1000px;
+    }
+    100% {
+      background-positon-x: 0px;
+    }
+  }
+  /* footer wave design */
+  .custom-shape-divider-top-1693296359 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+.custom-shape-divider-top-1693296359 svg {
+    position: relative;
+    display: block;
+    width: calc(135% + 1.3px);
+    height: 50px;
+}
+.custom-shape-divider-top-1693296359 .shape-fill {
+    fill: #ffffff;
+}
+.copyRight{
+    padding-left: 30px;
+}
+/* -----------------------------------update profile section--------------------- */
+.enterpas{
+  color:cadetblue;
+}
+.changepas{
+  border: none;
+  color: dodgerblue;
+  margin-left: -12px;
+  margin-top: 6px;
+}
+.changepas:hover{
+  color: blueviolet;
+  text-decoration: underline;
+}
+/* profile page css */
+.address{
+  color: dodgerblue;
+}
+.address:hover{
+  text-decoration: underline;
+  color: blueviolet;
+}
+/* ----------------------------------Cart page css --------------------------------- */
+.cartImg{
+  width: 23%;
+  height: 150px;
+  border-radius: 2px;
+  object-fit:cover;
+}
+.navCartImg{
+  width: 40px;
+  margin: 0px 20px;
+}
+.headers{
+background-color: rgba(172, 255, 47, 0.562);
+}
+.quantity{
+  margin-left: 200px;
+}
+.cartQuantity{
+  margin-right: 120px;
+  font-size: 20px;
+}
+.cartPricing{
+  font-size: 20px;
+}
+.remove{
+  color: red;
+  border: none;
+}
+.remove:hover{
+  color: dodgerblue;
+}
+/* navbar tooltip */
+.cartTooltip{
+  position: absolute;
+  top: 2px;
+  right: 160px;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  padding: 0px 6px;
+  border-radius: 4px;
+  opacity: 0;
+}
+.toltip:hover .cartTooltip{
+  opacity: 1;
+}
+.ProfileTooltip{
+  position: absolute;
+  top: 2px;
+  right: 6px;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  padding: 0px 6px;
+  border-radius: 4px;
+  opacity: 0;
+}
+.pToltip:hover .ProfileTooltip{
+  opacity: 1;
+}
+.noCartItem{
+  margin-bottom: 20px;
+  background-color: rgba(255, 0, 0, 0.623)(255, 164, 164);
+}
+.cartmarg{
+  margin-bottom: 120px;
+}
+.noItem{
+  color: rgba(255, 0, 0, 0.534);
+}
+.AddCartItem{
+  text-decoration: none;
+  background-color: dodgerblue;
+  color: white;
+  border-radius: 8px;
+  font-size: 20px;
+  padding: 10px 20px;
+}
+.alertmsg{
+  background-color: rgba(14, 180, 14, 0.774);
+  color: white;
+  border-radius: 0px 10px 0px 10px;
+  padding: 10px ;
+  position: fixed;
+  top: 0;
+  right: 450px;
+  animation-name: alert;
+  animation-duration: 1.8s;
+  animation-fill-mode: forwards;
+}
+.Orderalertmsg{
+  right: 400px;
+  animation-name: Orderalertmsg;
+  animation-duration: 1.8s;
+  animation-fill-mode: forwards;
+}
+.profilealertMsg{
+  right: 100px;
+  animation-name: profilealertMsg;
+  animation-duration: 1.8s;
+  animation-fill-mode: forwards;
+}
+@keyframes Orderalertmsg{
+  100%{
+      margin-top: 280px;
+      background-color: rgba(14, 180, 14, 0.774);
+      box-shadow: 0 0 rgba(16, 58, 16, 0.774), 0 0 25px rgba(14, 180, 14, 0.774), 0 0 50px rgba(14, 180, 14, 0.774), 0 0 200px rgba(14, 180, 14, 0.774);
+    }
+}
+@keyframes profilealertMsg{
+  100%{
+      margin-top: 150px;
+      background-color: rgba(14, 180, 14, 0.774);
+      box-shadow: 0 0 rgba(16, 58, 16, 0.774), 0 0 25px rgba(14, 180, 14, 0.774), 0 0 50px rgba(14, 180, 14, 0.774), 0 0 200px rgba(14, 180, 14, 0.774);
+    }
+}
+@keyframes alert{
+  100%{
+      margin-top: 340px;
+      background-color: rgba(14, 180, 14, 0.774);
+      box-shadow: 0 0 rgba(16, 58, 16, 0.774), 0 0 25px rgba(14, 180, 14, 0.774), 0 0 50px rgba(14, 180, 14, 0.774), 0 0 200px rgba(14, 180, 14, 0.774);
+    }
+}
+/* ------------------------------cash on delievery css----------------- */
+.paymentMethod{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cashDelievery{
+  background-color: rgba(223, 255, 158, 0.726);
+  color: rgb(31, 31, 31);
+  border: none;
+  border-radius: 6px;
+  padding: 4px 14px;
+  box-shadow: 0.5px 4px 8px rgb(107, 107, 107);
+}
+.footermargin{
+  margin-bottom: 90px;
+}
+.order{
+  color: rgb(241, 157, 1);
+}
+.order1{
+  color: green;
+}
+.orderTitle{
+  color: rgb(168, 147, 52) ;
+}
+/* ----------------------------------my orders css--------------------- */
+.myOrders{
+  color: rgb(120, 150, 62);
+}
+.delivered-order{
+  background-color:rgba(153, 205, 50, 0.39);
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+.delivered{
+  background-color:rgba(153, 205, 50, 0.76);
+}
+.cancelled{
+  background-color:rgba(255, 140, 140, 0.411);
+  color: rgb(241, 0, 0);
+}
+.cancelled-date{
+  background-color:rgba(255, 140, 140, 0.411);
+  color: rgb(241, 0, 0);
+  border-radius: 4px;
+  padding: 1px 3px;
+}
+/* -----------------------------register and OTP verification css --------------- */
+.verifiedDiv{
+  border-radius: 8px 8px 0px 0px;
+  box-shadow: 1px 2px 6px yellowgreen;
+}
+.verifiedImg{
+  width: 80px;
+}
+.otpInputField{
+  width: 36px;
+  margin: 0px 6px;
+  text-align: center;
+  border: 2px solid rgb(223, 195, 159);
+  border-radius: 4px;
+  outline: none;
+  font-size: 22px;
+}
+.otpInputField:focus{
+  border: 2px solid rgb(138, 241, 79);
+  background-color:rgba(245, 244, 241, 0.726);
+}
+.resend{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.resendBtn{
+  color: rgba(137, 43, 226, 0.884);
+}
+.resendBtn:hover{
+  color: blue;
+}
+.mainOtpDiv{
+  position: relative;
+  border-radius: 6px;
+  box-shadow: 0.8px 3px 8px lightgray;
+  padding: 0;
+  padding-bottom: 64px;
+}
+.verifyBtn{
+  width: 80%;
+  background-color: rgb(69, 162, 255);
+  color: white;
+  font-size: 18px;
+  transition-duration: 0.4s;
+  position: absolute;
+  padding: 6px 110px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 20px;
+  left: 34px;
+}
+.verifyBtn:hover{
+  background-color: dodgerblue;
+  color: white;
+}
+.VerficationAlrt{
+  width: 700px;
+  margin: 16px auto;
+}
+@media (min-width:760px) and (max-width: 1200px){
+    .part2{
+      height: 360px;
+      margin-bottom: -20px;
+    }
+    .homeCard{
+        border: none;
+        box-shadow: none;
+        margin-top: 60px;
+        margin-top: 100px;
+    }
+    .homeimg{
+        width: 340px;
+        margin-left: 30px;
+        margin-top: 30px;
+    }
+    .marginLargeScr{
+      margin-top: 44px;
+    }
+/* product page css */
+    .productPayImg{
+      font-size: 14px;
+    }
+    .productH3{
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .productPay{
+      font-size: 14px;
+      padding: 4px 4px;
+      border-radius: 4px;
+    }    
+/* profile page css */
+.profileWidth{
+  width: 490px;
+}
+.enterpas{
+  font-size: 14px;
+}
+/* cart css */
+
+.ProductName{
+  text-align: center;
+}
+.paymentMethod{
+  display:block;
+  text-align: center;
+}
+.cashDelievery{
+  margin-top: 20px;
+}
+.footermargin{
+  margin-bottom: 0px;
+}
+/*Success fail Message */
+.alertmsg{
+  background-color: rgba(14, 180, 14, 0.774);
+  color: white;
+  border-radius: 0px 10px 0px 10px;
+  padding: 10px ;
+  position: fixed;
+  top: 0;
+  right: 200px;
+  animation-name: alert;
+  animation-duration: 1.8s;
+  animation-fill-mode: forwards;
+}
+@keyframes alert{
+  100%{
+      margin-top: 340px;
+      background-color: rgba(14, 180, 14, 0.774);
+      box-shadow: 0 0 rgba(16, 58, 16, 0.774), 0 0 25px rgba(14, 180, 14, 0.774), 0 0 50px rgba(14, 180, 14, 0.774), 0 0 200px rgba(14, 180, 14, 0.774);
+    }
+}
+.profilealertMsg{
+  right: 20px;
+  animation-name: profilealertMsg;
+  animation-duration: 1.8s;
+  animation-fill-mode: forwards;
+}
+@keyframes profilealertMsg{
+  100%{
+      margin-top: 140px;
+      background-color: rgba(14, 180, 14, 0.774);
+      box-shadow: 0 0 rgba(16, 58, 16, 0.774), 0 0 25px rgba(14, 180, 14, 0.774), 0 0 50px rgba(14, 180, 14, 0.774), 0 0 200px rgba(14, 180, 14, 0.774);
+    }
+}
+}
+/* --------------------------------Responsive CSS -------------------------------- */
+@media(max-width:760px){
+    .part2{
+      height: 400px;
+    }
+    .homeCard{
+        border: none;
+        box-shadow: none;
+        text-align: center;
+        margin-top: 70px;
+    }
+    .homeimg{
+        width: 92%;
+        margin: 0;
+    }
+    .largeScreen{
+        display: none;
+    }
+    .smallScreen{
+        display: block;
+    }
+    .buyProducts{
+        margin-top: -60px;
+    }
+    .textColor{
+        color: rgb(19, 82, 82);
+    }
+    .marginLargeScr{
+      margin-top: 0px;
+    }
+    .freqMargin{
+        margin: 0px 10px;
+    }
+        /* product page css */
+        .productPayImg{
+          font-size: 12px;
+        }
+        .productH3{
+          font-size: 18px;
+          font-weight: bold;
+        }
+        .productPay{
+          font-size: 14px;
+          padding: 4px 4px;
+          border-radius: 4px;
+        }
+        /* update profile */
+        .enterpas{
+          font-size: 12px;
+        }
+        /* footer */
+        .contactLink{
+          border: none;
+          margin-top: -12px;
+        }
+/* cart css */
+.quantity{
+  margin-left: 40px;
+}
+.cartImg{
+  box-sizing: border-box;
+  width: 100px;
+  height: 70px;
+  border-radius: 2px;
+  object-fit:cover;
+}
+.cartPricing{
+  font-size: 14px;
+}
+.cartmarg{
+  margin-bottom: 20px;
+}
+.delete-btn{
+  border: none;
+  color: rgb(255, 34, 34);
+  background-color: white;
+}
+.delete-btn:hover{
+  border: none;
+  color: rgb(192, 0, 0);
+  background-color: white;
+}
+.ProductName{
+  text-align: center;
+}
+.paymentMethod{
+  display:block;
+  text-align: center;
+}
+.cashDelievery{
+  margin-top: 20px;
+}
+.footermargin{
+  margin-bottom: 0px;
+}
+.cartImg1{
+  width: 46%;
+  height: 90px;
+  border-radius: 4px;
+  object-fit:cover;
+}
+.orderDateFont{
+  font-size: 14px;
+  display: inline-block;
+}
+/*Success fail Message */
+.alertmsg{
+  background-color: rgba(14, 180, 14, 0.774);
+  color: white;
+  border-radius: 0px 10px 0px 10px;
+  position: relative;
+  top: 0;
+  right: 0px;
+  animation-name: alert;
+  animation-duration: 1.8s;
+  animation-fill-mode: forwards;
+  margin: 20px 20px;
+}
+@keyframes alert{
+  100%{
+      margin-top: 100px;
+      background-color: rgba(14, 180, 14, 0.774);
+      box-shadow: 0 0 rgba(16, 58, 16, 0.774), 0 0 25px rgba(14, 180, 14, 0.774), 0 0 50px rgba(14, 180, 14, 0.774), 0 0 200px rgba(14, 180, 14, 0.774);
+    }
+}
+.profilealertMsg{
+  right: 0px;
+  margin-top: 100px;
+  margin-bottom: -70px;
+  animation-name: profilealertMsg;
+  animation-duration: 1.8s;
+  animation-fill-mode: forwards;
+}
+@keyframes profilealertMsg{
+  100%{
+      background-color: rgba(14, 180, 14, 0.774);
+      box-shadow: 0 0 rgba(16, 58, 16, 0.774), 0 0 25px rgba(14, 180, 14, 0.774), 0 0 50px rgba(14, 180, 14, 0.774), 0 0 200px rgba(14, 180, 14, 0.774);
+    }
+}
+.otpInputField{
+  width: 30px;
+  font-size: 18px;
+}
+}
