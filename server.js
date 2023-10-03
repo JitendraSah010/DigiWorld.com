@@ -27,7 +27,7 @@ const Payment = require('./model/Payments');        //importing payment model  (
 
 
 mongoose.connect(process.env.SECRET_KEY).then( ()=>{
-    // console.log("mongoDB is connected")
+    console.log("mongoDB is connected")
 } )
 const store = new mongoDbSession({
     uri: process.env.SECRET_KEY,
@@ -105,5 +105,5 @@ app.use('*', router);
 const port = process.env.PORT || 3000;
 
 app.listen(port, ()=>{
-    // console.log("server is running on port 3000");
+    console.log("server is running on port 3000");
 })
