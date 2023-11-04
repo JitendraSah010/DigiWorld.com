@@ -29,7 +29,7 @@
                     <div class="card shadow">
                         <div class="card-body ">
                             <div class="pricePosition">
-                                <img src="https://source.unsplash.com/1600x700/? <%= fetchedProducts[i].img%>" class="img-fluid rounded" alt="">
+                                <img src="<%= fetchedProducts[i].img%>" class="ProdImg rounded" alt="">
                                 <a href="/checkout?fetchedProduct=<%= fetchedProducts[i].title %>" class="pay rounded bg-white mb-0 priceAmount productPayImg"> Rs <%= fetchedProducts[i].pricing%></a>      <!--fetchedProduct is used to get product name i.e: req.query.fetchedProduct -->
                                 <form action="/addCart" method="post">
                                     <input type="hidden" name="productId" value="<%= fetchedProducts[i]._id %>">

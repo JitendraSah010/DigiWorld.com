@@ -28,7 +28,8 @@
                     <a href="/allProducts" style="text-decoration: none; color: black;">    
                     <div class="d-flex justify-content-between shadow p-3 mb-5">
                         <div class=" d-flex">
-                            <img src="https://source.unsplash.com/1600x1000/?<%= CustomerOrderDetails[i].productName %>" class="cartImg" alt="">
+                            <img src="<%= CustomerOrderDetails[i].productImg %>" class="cartImg" alt="">
+                            <!-- <img src="https://source.unsplash.com/1600x1000/?<%= CustomerOrderDetails[i].productName %>" class="cartImg" alt=""> -->
                             <div class="productTitle ms-3">
                               <h4 class=" mb-1"> <%= CustomerOrderDetails[i].productName %> </h4>
                               <p class="m-0">Amount: Rs <%= CustomerOrderDetails[i].productQuantity * CustomerOrderDetails[i].productPrice %> </p>
@@ -89,7 +90,7 @@
                 <a href="/allProducts" style="text-decoration: none; color: black;">    
                     <div class="shadow p-3 mb-5">
                         <div class="">
-                              <img src="https://source.unsplash.com/1600x1000/?<%= CustomerOrderDetails[i].productName %>" class=" cartImg1 ms-3" alt="">
+                              <img src="<%= CustomerOrderDetails[i].productImg %>" class=" cartImg1 ms-3" alt="">
                             <div class="productTitle ms-3">
                               <h2 class=" mb-1 mt-2"> <%= CustomerOrderDetails[i].productName %> </h2>
                               <p class="m-0">Amount: Rs <%= CustomerOrderDetails[i].productQuantity * CustomerOrderDetails[i].productPrice %> </p>
@@ -146,7 +147,8 @@
                 <a href="/allProducts" style="text-decoration: none; color: black;">    
                     <div class="d-flex justify-content-between shadow p-3 mb-5">
                         <div class=" d-flex">
-                            <img src="https://source.unsplash.com/1600x1000/?<%= onlinePaymentOrderDetails[i].desc %>" class="cartImg" alt="">
+                            <img src="<%= onlinePaymentOrderDetails[i].img%>" class="cartImg" alt="">
+                            <!-- <img src="https://source.unsplash.com/1600x1000/?<%= onlinePaymentOrderDetails[i].desc %>" class="cartImg" alt=""> -->
                             <div class="productTitle ms-3">
                               <h4 class=" mb-1"> <%= onlinePaymentOrderDetails[i].desc %> </h4>
                               <p class="m-0">Amount: Rs <%= onlinePaymentOrderDetails[i].amount/100 %>  
@@ -204,7 +206,7 @@
                 <a href="/allProducts" style="text-decoration: none; color: black;">    
                     <div class="shadow p-3 mb-5">
                         <div class="">
-                              <img src="https://source.unsplash.com/1600x1000/?<%= onlinePaymentOrderDetails[i].desc %>" class=" cartImg1 ms-3" alt="">
+                              <img src="<%= onlinePaymentOrderDetails[i].img%>" class=" cartImg1 ms-3" alt="">
                             <div class="productTitle ms-3">
                               <h2 class=" mb-1 mt-2"> <%= onlinePaymentOrderDetails[i].desc %> </h2>
                               <p class="m-0">Amount: Rs <%= onlinePaymentOrderDetails[i].amount/100 %> <span class="px-2" style="background-color: rgb(255, 254, 172); border-radius: 3px; color: green;" >paid online</span>  </p>

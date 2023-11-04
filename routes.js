@@ -57,6 +57,10 @@ const storage = multer.diskStorage({          //defined destination and filename
 // multer function middleware
 const upload = multer({ storage:storage}).single('profileImg');
 
+// 
+
+const uploadProductImg = multer({ storage:storage}).single('img');
+
 // Nodemailer configuration
 const transporter = nodemailer.createTransport({
     service: 'Gmail',
@@ -437,11 +441,11 @@ router.get('/AllProducts', isAuth, async(req,res)=>{
 router.get('/admin/create-product', isAdmin, async(req,res)=>{
     res.render('./admin/AddProduct');
 })
-router.post('/store-product', isAdmin, async(req,res)=>{
-    const {title, img, desc, pricing, status} = req.body;
+router.post('/store-product', isAdmin, uploadProductImg, async(req,res)=>{
+    const {title, desc, pricing, status} = req.body;
     const Createproduct = new Products({
         title: title,
-        img: img,
+        img: req.file.filename,
         desc: desc,
         pricing: pricing,
         status: status,
@@ -485,7 +489,7 @@ router.post('/delete-product', isAdmin, async(req, res)=>{
 const razorpayKey = process.env.RAZOR_SECRET_ID;
 router.get('/checkout', isAuth, async(req,res)=>{
     let productTitle = req.query.fetchedProduct;
-    const productDetails = await products.findOne({title:productTitle});
+    const productDetails = await Products.findOne({title:productTitle});
     const profileImage = await Users.findOne({email: req.session.loginUser.email});
 
     const options = {
@@ -511,6 +515,7 @@ router.post('/payment-success', async(req,res)=>{
     
     const paymentDetails = new Payment({
         email: response.email,
+        img: req.body.img,
         phone: response.contact,
         payment_id: response.id,
         amount: response.amount,
@@ -691,9 +696,10 @@ router.post('/storeDeliveryOrder', isAuth, async(req,res)=>{
     const now = new Date();           // formating date
     const date = now.toLocaleDateString('en', {year: 'numeric', month: 'long', day: 'numeric'} ) + "(" + now.toLocaleTimeString('en', {hour :"2-digit", minute:"2-digit"}) +")" ;
 
-    const { productName, productPrice, productQuantity, customerName, customerEmail, customerContact, deliveryAddress } = req.body;
+    const { productName,productImg, productPrice, productQuantity, customerName, customerEmail, customerContact, deliveryAddress } = req.body;
     const DeliveryDetails = new DeliveryOrder({
         productName: productName,
+        productImg: productImg,
         productPrice: productPrice,
         productQuantity: productQuantity,
         customerName: customerName,

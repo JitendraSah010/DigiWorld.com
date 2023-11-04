@@ -34,7 +34,7 @@
                 <% for (let i = 0; i < cartProduct.length; i++) { %>
                 <div class="d-flex justify-content-around shadow p-3 mb-5">
                     <div class="CartDetails d-flex">
-                        <img src="https://source.unsplash.com/1600x1000/?<%= cartProduct[i].cartImg %>" class="cartImg" alt="">
+                        <img src="<%= cartProduct[i].cartImg %>" class="cartImg" alt="">
                         <div class="productTitle ms-3">
                           <h4 class=" mb-1"> <%= cartProduct[i].cartTitle %> </h4>
                           <p class="m-0">Price: Rs <%= cartProduct[i].cartQuantity * cartProduct[i].cartPricing %> </p>
@@ -81,7 +81,7 @@
                 <% for (let i = 0; i < cartProduct.length; i++) { %>
                 <div class="d-flex justify-content-between shadow p-3 mt-4">
                     <div class="text-start">
-                        <img src="https://source.unsplash.com/1600x1000/?<%= cartProduct[i].cartImg %>" class="cartImg" alt="">
+                        <img src="<%= cartProduct[i].cartImg %>" class="cartImg" alt="">
                         <div class="text-start">
                           <h6 class=" mt-1 mb-1"> <%= cartProduct[i].cartTitle %> </h6>
                           <div class="d-flex justify-content-between">
