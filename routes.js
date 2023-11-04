@@ -565,7 +565,7 @@ router.post('/paidOrderCancel', isAuth, async(req,res)=>{
 //fetching paid users on admin page
 router.get('/paid-users', isAdmin, async(req,res)=>{
     const paidUsers = await Payment.find().sort({date: -1});
-    res.render('admin/payments', {paidUsers: paidUsers})
+    res.render('admin/Payments', {paidUsers: paidUsers});
 })
 
 // ------------------------------users list on admin page------------------------
