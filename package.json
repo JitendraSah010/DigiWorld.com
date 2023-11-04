@@ -34,5 +34,6 @@
     "orders": "^1.0.0",
     "query": "^0.2.0",
     "razorpay": "^2.9.2"
-  }
+  },
+  "description": ""
 }

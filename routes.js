@@ -22,6 +22,7 @@ router.use(express.static('public'));
 // Razorpay payment gateway
 const Razorpay = require('razorpay');
 const products = require('./model/products');
+const DeliveryOrders = require('./model/DeliveryOrders');
 const razorpay = new Razorpay({
     key_id: process.env.RAZOR_SECRET_ID,
     key_secret: process.env.RAZOR_SECRET_KEY,
@@ -313,7 +314,7 @@ router.post('/SendResetLink', async(req,res)=>{
           if(user.isVerified == true){
           // Generate a password reset token and expiration time
           const resetToken = crypto.randomBytes(20).toString('hex');
-          const resetTokenExpiry = new Date(Date.now() + 5000); // Token expires in 1 hour
+          const resetTokenExpiry = new Date(Date.now() + 50000); // Token expires in 1 hour
           // Store the reset token and its expiration time in the user's document
           user.resetPasswordToken = resetToken;
           user.resetPasswordExpires = resetTokenExpiry;
@@ -579,7 +580,9 @@ router.post('/delete-user', isAdmin, async(req, res)=>{
     const deleteuser = await Users. deleteOne({email: req.body.email});
     const delcallback = await Callbacks.deleteMany({email:req.body.email});
     const deleteCart = await CartItems.deleteMany({cartEmail:req.body.email});
-    // const delPaymentDetails = await Payment.deleteMany({email: req.body.email});
+    const delPaymentDetails = await Payment.deleteMany({email: req.body.email});
+    const delOrders = await DeliveryOrder.deleteMany({customerEmail: req.body.email});
+
     res.redirect('/users');
 } )
 router.post('/delete-unverified-user', async(req, res)=>{
